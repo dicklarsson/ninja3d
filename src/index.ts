@@ -30,10 +30,22 @@ function init() {
   camera.position.z = 250;
 
   // scene
-
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x333333);
 
+  //Load background Sky box
+
+  const loader = new THREE.CubeTextureLoader();
+  const texture = loader.load([
+    "/backgrounds/1/arid2_ft.jpg",
+    "/backgrounds/1/arid2_bk.jpg",
+    "/backgrounds/1/arid2_up.jpg",
+    "/backgrounds/1/arid2_dn.jpg",
+    "/backgrounds/1/arid2_rt.jpg",
+    "/backgrounds/1/arid2_lf.jpg"
+  ]);
+  scene.background = texture;
+ 
   var ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
   scene.add(ambientLight);
 
