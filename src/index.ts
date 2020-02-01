@@ -45,7 +45,7 @@ function init() {
     "/backgrounds/1/arid2_lf.jpg"
   ]);
   scene.background = texture;
- 
+
   var ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
   scene.add(ambientLight);
 
@@ -104,6 +104,9 @@ function init() {
   container.appendChild(renderer.domElement);
 
   document.addEventListener("mousemove", onDocumentMouseMove, false);
+ 
+  document.addEventListener("touchmove", onTouchMove, false);
+  
 
   //
 
@@ -123,6 +126,17 @@ function onWindowResize() {
 function onDocumentMouseMove(event) {
   mouseX = (event.clientX - windowHalfX) / 2;
   mouseY = (event.clientY - windowHalfY) / 2;
+
+}
+
+function onTouchMove(event) {
+  const clientX = event.targetTouches[0].clientX;
+  const clientY = event.targetTouches[0].clientY;
+
+  mouseX = (clientX - windowHalfX) / 2;
+  mouseY = (clientY - windowHalfY) / 2; 
+
+  event.preventDefault(); //Prevent scrolling
 }
 
 //
