@@ -1,0 +1,23 @@
+{
+  "name": "ninjalog",
+  "version": "1.0.0",
+  "description": "Let ninjas visualize errors in your log",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dick Henrik Larsson",
+  "license": "ISC",
+  "dependencies": {
+    "parcel-plugin-static-files-copy": "^2.3.1"
+  },
+  "staticFiles": {
+    "staticPath": "static",
+    "watcherGlob": "**"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "three": "^0.113.2",
+    "typescript": "^3.7.5"
+  }
+}
