@@ -79,8 +79,8 @@ function init() {
       });
   }
 
-  loady("/ninja/", "KID_NINJA_KATANA", 100, -50, 0);
-  loady("/lego/", "lego obj", 0, -50, -100);
+  loady("/ninja/", "KID_NINJA_KATANA", -180, -50, 0);
+  loady("/lego/", "lego obj", -100, -50, -100);
   loady("/lego/", "lego obj", 50, -50, -200);
 
   //
