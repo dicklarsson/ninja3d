@@ -2,4 +2,7 @@
 
 # BUILD
 npm install  
-npx parcel index.html
+npx parcel index.html  
+Open your web browser http://localhost:1234
+# Links
+https://threejsfundamentals.org/threejs/lessons/threejs-backgrounds.html
