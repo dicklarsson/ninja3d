@@ -4,25 +4,35 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader.js";
 import { DDSLoader } from "three/examples/jsm/loaders/DDSLoader.js";
 
-var container;
+var 
+  container,
+  camera,
+  scene, 
+  renderer,
+  mouseX = 0,
+  mouseY = 0,
+  windowHalfX = window.innerWidth / 2,
+  windowHalfY = window.innerHeight / 2;
 
-var camera, scene, renderer;
 
-var mouseX = 0,
-  mouseY = 0;
-
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
+// -------------
+// Start the app
+// -------------
 
 init();
 animate();
+
+
+// --------------
+// Give me a name
+// --------------
 
 function init() {
   container = document.createElement("div");
   document.body.appendChild(container);
 
   camera = new THREE.PerspectiveCamera(
-    45,
+    50,
     window.innerWidth / window.innerHeight,
     1,
     2000
@@ -103,30 +113,20 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
+  // Add event listeners
   document.addEventListener("mousemove", onDocumentMouseMove, false);
- 
   document.addEventListener("touchmove", onTouchMove, false);
-  
-
-  //
-
   window.addEventListener("resize", onWindowResize, false);
 }
 
-function onWindowResize() {
-  windowHalfX = window.innerWidth / 2;
-  windowHalfY = window.innerHeight / 2;
 
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
+// ----------------
+//  Event listeners
+// ----------------
 
 function onDocumentMouseMove(event) {
   mouseX = (event.clientX - windowHalfX) / 2;
   mouseY = (event.clientY - windowHalfY) / 2;
-
 }
 
 function onTouchMove(event) {
@@ -139,7 +139,20 @@ function onTouchMove(event) {
   event.preventDefault(); //Prevent scrolling
 }
 
-//
+function onWindowResize() {
+  windowHalfX = window.innerWidth / 2;
+  windowHalfY = window.innerHeight / 2;
+
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+
+// ------------------
+// Animate and render
+// ------------------
 
 function animate() {
   requestAnimationFrame(animate);
